@@ -14,5 +14,8 @@ program
   .action(cwd => { currentWorkDirectory = cwd || defaultWorkDirectory; })
   .parse(process.argv);
 
-currentWorkDirectory = path.resolve(currentWorkDirectory);
-const inspector = new Inspector(currentWorkDirectory);
+(async function()
+{
+  const inspector = new Inspector(currentWorkDirectory);
+  await inspector.inspect();
+})();
