@@ -1,3 +1,18 @@
 #!/usr/bin/env node
 
-console.log('Git Inspector');
+const path = require('path');
+const program = require('commander');
+const Inspector = require('./lib/inspector');
+
+const version = require(path.join(__dirname, '/package.json')).version;
+const defaultWorkDirectory = process.cwd();
+let currentWorkDirectory = null;
+
+program
+  .version(version, '-v, --version')
+  .arguments('[cwd]')
+  .action(cwd => { currentWorkDirectory = cwd || defaultWorkDirectory; })
+  .parse(process.argv);
+
+currentWorkDirectory = path.resolve(currentWorkDirectory);
+const inspector = new Inspector(currentWorkDirectory);
