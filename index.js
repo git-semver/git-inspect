@@ -17,5 +17,6 @@ program
 (async function()
 {
   const inspector = new Inspector(currentWorkDirectory);
-  await inspector.inspect();
+  const report = await inspector.report();
+  console.log(JSON.stringify(report, 2, ' '));
 })();
