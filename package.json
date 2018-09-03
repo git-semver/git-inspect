@@ -4,7 +4,9 @@
   "description": "GIT Inspector",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./lib/*"
+    "test": "mocha ./lib/*",
+    "integration": "mocha ./integration/*",
+    "test-all": "npm run test && npm run integration"
   },
   "keywords": [
     "git"
