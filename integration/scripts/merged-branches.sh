@@ -1,6 +1,4 @@
 #!/bin/bash
-
-echo "Start create Not merged branch repository"
 git init
 echo "1" >> test0.txt
 git add .

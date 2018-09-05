@@ -1,7 +1,4 @@
 #!/bin/bash
-
-
-echo "Start create Linear History repository"
 git init
 echo "1" >> test0.txt
 git add . ; git commit -am '1'
@@ -32,4 +29,3 @@ echo "3" >> test1.txt
 git commit -am '7'
 git checkout master
 git merge topic3 --no-edit --no-ff
-echo "Complete ..."

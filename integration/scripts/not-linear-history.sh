@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "Start create Not Linear History repository"
 git init
 echo "1" >> test0.txt
 git add . ; git commit -am '1'
@@ -29,4 +28,3 @@ echo "3" >> test1.txt
 git add . ; git commit -am '7'
 git checkout master
 git merge topic1 --no-edit
-echo "Complete ..."
