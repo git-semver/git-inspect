@@ -1,20 +1,27 @@
 const { expect }  = require('chai');
 const sinon = require('sinon');
-const { createRepository, clearGarden } = require('../helpers');
-const Inspector = require('../../lib/inspector');
+const map = require('lodash/map');
+const { inspect, clearGarden } = require('../helpers');
 
-describe('Inpect commits with duplicated message', () =>
+describe('Inspect commits with duplicated message', () =>
 {
-  const repository = 'duplicated-commits';
-  let currentWorkDirectory = null;
+  const caseName = 'duplicated-commits';
+  let inspector = null;
 
-  beforeEach(async () => currentWorkDirectory = await createRepository(repository));
-  afterEach(async () => await clearGarden(repository));
+  beforeEach(async () => { inspector = await inspect(caseName); });
+  afterEach(async () => await clearGarden(caseName));
 
-  it('Commits with duplicated message should be include in report', async () =>
+  it('Should be include in report commits with duplicated message ', async () =>
   {
-    const inspector = new Inspector(currentWorkDirectory);
-    const report = await inspector.report();
-    expect(true).to.equal(true);
+    const { commit: { duplicatedMessage }} = await inspector.report();
+    expect(Object.keys(duplicatedMessage)).to.deep.equal(['1', '4', '5'])
+  });
+
+  it('Should be include in report duplicated commits messages', async () =>
+  {
+    const { commit: { duplicatedMessage }} = await inspector.report();
+    expect(map(duplicatedMessage['1'], 'message')).to.deep.equal(['1', '1']);
+    expect(map(duplicatedMessage['4'], 'message')).to.deep.equal(['4', '4', '4']);
+    expect(map(duplicatedMessage['5'], 'message')).to.deep.equal(['5', '5']);
   });
 });

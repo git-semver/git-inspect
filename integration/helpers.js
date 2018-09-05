@@ -3,6 +3,7 @@ const { mkdirSync, existsSync, readdirSync, lstatSync, unlinkSync, rmdirSync } =
 const { promisify } = require('util');
 const { exec } = require('child_process');
 const execAsync = promisify(exec);
+const Inspector = require('../lib/inspector');
 
 const scriptsPath = join(__dirname, 'scripts');
 const garderPath = join(__dirname, 'garden');
@@ -38,4 +39,10 @@ function clearGarden(repoName)
   return repositoryPath;
 }
 
-module.exports = { createRepository, clearGarden };
+async function inspect(caseName)
+{
+  const cwd = await createRepository(caseName)
+  return new Inspector(cwd);
+}
+
+module.exports = { createRepository, clearGarden, inspect };
