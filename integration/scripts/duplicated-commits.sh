@@ -1,6 +1,7 @@
 #!/bin/bash
 git init
 echo "1" >> test0.txt
+git add .
 git commit -am '1'
 echo "2" >> test0.txt
 git commit -am '2'
