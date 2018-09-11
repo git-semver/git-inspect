@@ -4,9 +4,9 @@
   "description": "GIT Inspector",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./lib/ --recursive",
-    "integration": "mocha ./integration/ --recursive",
-    "test-all": "npm run test && npm run integration"
+    "test:unit": "mocha ./lib/ --recursive",
+    "test:integration": "mocha ./integration/ --recursive",
+    "test": "npm run test:unit && npm run test:integration"
   },
   "keywords": [
     "git"
