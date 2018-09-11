@@ -2,6 +2,7 @@ const { join } = require('path');
 const { mkdirSync, existsSync, readdirSync, lstatSync, unlinkSync, rmdirSync } = require('fs');
 const { promisify } = require('util');
 const { exec } = require('child_process');
+const driver = require('nodegit');
 const execAsync = promisify(exec);
 const Inspector = require('../lib/inspector');
 
@@ -42,7 +43,7 @@ function clearGarden(repoName)
 async function inspect(caseName)
 {
   const cwd = await createRepository(caseName)
-  return new Inspector(cwd);
+  return new Inspector(cwd, driver);
 }
 
 module.exports = { createRepository, clearGarden, inspect };

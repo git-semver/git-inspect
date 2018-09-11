@@ -2,6 +2,7 @@
 
 const path = require('path');
 const program = require('commander');
+const driver = require('nodegit');
 const Inspector = require('./lib/inspector');
 
 const version = require(path.join(__dirname, '/package.json')).version;
@@ -16,7 +17,7 @@ program
 
 (async function()
 {
-  const inspector = new Inspector(currentWorkDirectory);
+  const inspector = new Inspector(currentWorkDirectory, driver);
   const report = await inspector.report();
   console.log(JSON.stringify(report, 2, ' '));
 })();
