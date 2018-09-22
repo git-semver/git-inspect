@@ -5,6 +5,7 @@ const { exec } = require('child_process');
 const driver = require('nodegit');
 const execAsync = promisify(exec);
 const Inspector = require('../lib/inspector');
+const Repository = require('../lib/adapters/nodegit/repository');
 
 const scriptsPath = join(__dirname, 'scripts');
 const garderPath = join(__dirname, 'garden');
@@ -42,8 +43,9 @@ function clearGarden(repoName)
 
 async function inspect(caseName)
 {
-  const cwd = await createRepository(caseName)
-  return new Inspector(cwd, driver);
+  const cwd = await createRepository(caseName);
+  const adapter = new Repository(cwd, driver);
+  return new Inspector(adapter);
 }
 
 module.exports = { createRepository, clearGarden, inspect };
