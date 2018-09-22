@@ -17,7 +17,7 @@ describe('[Integration] Inspect history is not linear', () =>
     const { isLinearHistory, branches, linearFactor } = linear;
     const { master, topic1, topic2 } = branches;
     expect(isLinearHistory).to.equal(false);
-    expect(linearFactor).to.equal(0.81);
+    expect(linearFactor).to.equal(0.816);
     expect(master.isLinearHistory).to.equal(false);
     expect(topic1.isLinearHistory).to.equal(true);
     expect(topic2.isLinearHistory).to.equal(false);
