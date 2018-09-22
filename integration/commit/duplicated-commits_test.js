@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const map = require('lodash/map');
 const { inspect, clearGarden } = require('../helpers');
 
-describe('Inspect commits with duplicated message', () =>
+describe('[Integration] Inspect commits with duplicated message', () =>
 {
   const caseName = 'duplicated-commits';
   let inspector = null;

@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const map = require('lodash/map');
 const { inspect, clearGarden } = require('../helpers');
 
-describe('Inspect branches is not obsolete', () =>
+describe('[Integration] Inspect branches is not obsolete', () =>
 {
   const caseName = 'not-obsolete-branch';
   let inspector = null;

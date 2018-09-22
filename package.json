@@ -6,7 +6,7 @@
   "scripts": {
     "test:unit": "mocha ./lib/ --recursive",
     "test:integration": "mocha ./integration/ --recursive",
-    "test": "npm run test:unit && npm run test:integration"
+    "test": "mocha ./lib/ ./integration/ --recursive"
   },
   "keywords": [
     "git"
