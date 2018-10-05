@@ -14,7 +14,16 @@
   "bin": {
     "git-inspect": "./index.js"
   },
-  "author": "nkazantsev",
+  "author": {
+    "name" : "realb0t",
+    "email" : "kazantsev.nickolay@gmail.com"
+  },
+  "contributors": [
+    {
+      "name" : "realb0t",
+      "email" : "kazantsev.nickolay@gmail.com"
+    }
+  ],
   "license": "GNU AGPLv3",
   "dependencies": {
     "commander": "^2.17.1",
