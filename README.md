@@ -47,9 +47,7 @@ $ git-inspect
     "shortMessage": {
       "commits": [ '<commit_sha>' ]
     },
-    "longTitle": {
-      "commits": [ '<commit_sha>' ]
-    }
+    "longTitle": [ "<commit_sha>" ],
   },
   "branch": {
     "gitflow": {
