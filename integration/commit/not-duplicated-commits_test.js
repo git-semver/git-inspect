@@ -14,6 +14,6 @@ describe('[Integration] Inspect commits without duplicated message', () =>
   it('Should be not include in report commits with duplicated message ', async () =>
   {
     const { commit: { duplicatedMessage }} = await inspector.report();
-    expect(Object.keys(duplicatedMessage)).to.deep.equal([])
+    expect(duplicatedMessage).to.deep.equal([])
   });
 });

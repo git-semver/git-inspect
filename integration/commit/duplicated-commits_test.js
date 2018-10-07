@@ -14,14 +14,14 @@ describe('[Integration] Inspect commits with duplicated message', () =>
   it('Should be include in report commits with duplicated message ', async () =>
   {
     const { commit: { duplicatedMessage }} = await inspector.report();
-    expect(Object.keys(duplicatedMessage)).to.deep.equal(['1', '4', '5'])
+    expect(duplicatedMessage.length).to.equal(3)
   });
 
   it('Should be include in report duplicated commits messages', async () =>
   {
     const { commit: { duplicatedMessage }} = await inspector.report();
-    expect(map(duplicatedMessage['1'], 'message')).to.deep.equal(['1', '1']);
-    expect(map(duplicatedMessage['4'], 'message')).to.deep.equal(['4', '4', '4']);
-    expect(map(duplicatedMessage['5'], 'message')).to.deep.equal(['5', '5']);
+    expect(map(duplicatedMessage[0], 'message')).to.deep.equal(['1', '1']);
+    expect(map(duplicatedMessage[1], 'message')).to.deep.equal(['4', '4', '4']);
+    expect(map(duplicatedMessage[2], 'message')).to.deep.equal(['5', '5']);
   });
 });

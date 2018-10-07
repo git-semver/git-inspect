@@ -31,14 +31,16 @@ $ cd ./<repository>
 $ git-inspect
 ```
 
-# Output
+## Output
 
+
+### Deprecated:
 ```
 {
   "commit": {
-    "duplicatedMessage": {
-      "<message>": [ '<commit_sha>' ]
-    },
+    "duplicatedMessage": [
+      [ "<commit_sha>" ]
+    ],
     "unlinkedTracker": {
       "commits": [ '<commit_sha>' ]
     },
@@ -77,6 +79,53 @@ $ git-inspect
         "<branch_name>": "<branch_ref>"
       },
       "branchesCount": <number>
+    }
+  }
+}
+```
+
+### Perspective
+```
+{
+  "commits": {
+    "duplicatedMessage": [
+      [ "<commit_sha>" ]
+    ],
+    "unlinkedTracker": [ "<commit_sha>" ],
+    "shortMessage": [ "<commit_sha>" ],
+    "longTitle": [ "<commit_sha>" ],
+    "totalCommits": <number>,
+    "contributors": { <email>: <name> }
+  },
+  "branches": {
+    "heads": {
+      "<branch_name>": "<commit_sha>",
+    },
+    "changes": "<heads_sha>",
+    "gitflow": {
+      "branches": {
+       "master": <boolean>,
+       "develop": <boolean>,
+       "features": <boolean>,
+       "hotfixes": <boolean>,
+       "releases": <boolean>,
+       "other": <boolean>
+      },
+      "scheme": <boolean>
+    },
+    "linear": {
+      "branches": {
+        "<branch_name>": {
+          "cousins": [],
+          "linearFactor": <number>,
+          "isLinearHistory": <boolean>
+        }
+      },
+      "linearFactor": <number>,
+      "isLinearHistory": <boolean>
+    },
+    "obsolete": {
+      "<branch_name>": "<branch_ref>"
     }
   }
 }
