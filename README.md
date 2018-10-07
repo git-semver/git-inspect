@@ -41,9 +41,7 @@ $ git-inspect
     "duplicatedMessage": [
       [ "<commit_sha>" ]
     ],
-    "unlinkedTracker": {
-      "commits": [ '<commit_sha>' ]
-    },
+    "unlinkedTracker": [ "<commit_sha>" ],
     "shortMessage": [ "<commit_sha>" ],
     "longTitle": [ "<commit_sha>" ],
   },

@@ -14,13 +14,13 @@ describe('[Integration] Inspect commits without issue tracker link', () =>
   it('Should be include in report commits without links', async () =>
   {
     const { commit: { unlinkedTracker }} = await inspector.report();
-    expect(unlinkedTracker.commits.length).to.equal(3)
+    expect(unlinkedTracker.length).to.equal(3)
   });
 
   it('Should be include in report commits without links and with messages', async () =>
   {
-    const { commit: { unlinkedTracker: { commits } }} = await inspector.report();
-    expect(map(commits, 'message')).to.deep.equal([
+    const { commit: { unlinkedTracker }} = await inspector.report();
+    expect(map(unlinkedTracker, 'message')).to.deep.equal([
       '3 unlinked',
       '4 unlinked',
       '2 unlinked',
