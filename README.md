@@ -44,9 +44,7 @@ $ git-inspect
     "unlinkedTracker": {
       "commits": [ '<commit_sha>' ]
     },
-    "shortMessage": {
-      "commits": [ '<commit_sha>' ]
-    },
+    "shortMessage": [ "<commit_sha>" ],
     "longTitle": [ "<commit_sha>" ],
   },
   "branch": {

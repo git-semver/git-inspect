@@ -14,13 +14,13 @@ describe('[Integration] Inspect commits with short message', () =>
   it('Should be include in report commits with short message', async () =>
   {
     const { commit: { shortMessage }} = await inspector.report();
-    expect(shortMessage.commits.length).to.equal(1)
+    expect(shortMessage.length).to.equal(1)
   });
 
   it('Should be include in report commits with short message and with message', async () =>
   {
-    const { commit: { shortMessage: { commits } }} = await inspector.report();
-    expect(map(commits, 'message')).to.deep.equal([
+    const { commit: { shortMessage }} = await inspector.report();
+    expect(map(shortMessage, 'message')).to.deep.equal([
       'Short message commit'
     ]);
   });
