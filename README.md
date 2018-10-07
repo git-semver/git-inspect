@@ -62,11 +62,9 @@ $ git-inspect
         "<branch_name>": {
           "cousins": [],
           "linearFactor": <number>,
-          "isLinearHistory": <boolean>
         },
       }
       "linearFactor": <number>,
-      "isLinearHistory": <boolean>
     },
     "obsolete": {
       "obsoleteBranches": {
@@ -93,7 +91,7 @@ $ git-inspect
   },
   "branches": {
     "heads": {
-      "<branch_name>": "<commit_sha>",
+      "<branch_name>": "<head_commit>",
     },
     "changes": "<heads_sha>",
     "gitflow": {
@@ -111,15 +109,13 @@ $ git-inspect
       "branches": {
         "<branch_name>": {
           "cousins": [],
-          "linearFactor": <number>,
-          "isLinearHistory": <boolean>
+          "linearFactor": <number>
         }
       },
-      "linearFactor": <number>,
-      "isLinearHistory": <boolean>
+      "linearFactor": <number>
     },
     "obsolete": {
-      "<branch_name>": "<branch_ref>"
+      "<branch_name>": "<head_commit>"
     }
   }
 }
