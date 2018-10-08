@@ -67,4 +67,9 @@ class SchemaValidator
   };
 }
 
-module.exports = { createRepository, clearGarden, inspect, SchemaValidator };
+module.exports = {
+  createRepository,
+  clearGarden,
+  inspect,
+  SchemaValidator
+};

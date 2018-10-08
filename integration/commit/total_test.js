@@ -1,7 +1,7 @@
 const { expect }  = require('chai');
 const sinon = require('sinon');
 const map = require('lodash/map');
-const { inspect, clearGarden } = require('../helpers');
+const { inspect, clearGarden, SchemaValidator } = require('../helpers');
 
 describe('[Integration] Inspect total commits', () =>
 {
@@ -10,6 +10,14 @@ describe('[Integration] Inspect total commits', () =>
 
   beforeEach(async () => { inspector = await inspect(caseName); });
   afterEach(async () => await clearGarden(caseName));
+
+  it('Should be supported by JSON Schema for this case', async () =>
+  {
+    const report = await inspector.report();
+    const validator = new SchemaValidator();
+    const valid = validator.validate(report);
+    expect(valid).to.equal(true, JSON.stringify(validator.errors));
+  });
 
   it('Should be collect total commits count', async () =>
   {
