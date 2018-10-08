@@ -1,6 +1,6 @@
 {
   "name": "git-inspect",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "GIT Inspector",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "git"
   ],
   "bin": {
-    "git-inspect": "./index.js"
+    "git-inspect": "./bin/index.js"
   },
   "author": {
     "name": "realb0t",
@@ -32,6 +32,7 @@
     "ora": "^3.0.0"
   },
   "devDependencies": {
+    "ajv": "^6.5.4",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "sinon": "^6.1.5"

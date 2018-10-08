@@ -1,7 +1,7 @@
 const { expect }  = require('chai');
 const sinon = require('sinon');
 const map = require('lodash/map');
-const { inspect, clearGarden } = require('../helpers');
+const { inspect, clearGarden, SchemaValidator } = require('../helpers');
 
 describe('[Integration] Inspect commits with long title', () =>
 {
@@ -11,17 +11,24 @@ describe('[Integration] Inspect commits with long title', () =>
   beforeEach(async () => { inspector = await inspect(caseName); });
   afterEach(async () => await clearGarden(caseName));
 
+  it('Should be supported by JSON Schema for this case', async () =>
+  {
+    const report = await inspector.report();
+    const validator = new SchemaValidator();
+    const valid = validator.validate(report);
+    expect(valid).to.equal(true, JSON.stringify(validator.errors));
+  });
+
   it('Should be include in report commits with long title', async () =>
   {
     const { commit: { longTitle }} = await inspector.report();
-    //expect(longTitle.commits.length).to.equal(1)
-    expect(true).to.equal(true);
+    expect(longTitle.length).to.equal(1);
   });
 
   it('Should be include in report commits with long title and message', async () =>
   {
-    const { commit: { longTitle: { commits } }} = await inspector.report();
-    expect(map(commits, 'message')).to.deep.equal([
+    const { commit: { longTitle }} = await inspector.report();
+    expect(map(longTitle, 'message')).to.deep.equal([
       'This is not normal but is very long title. Bad commit'
     ]);
   });

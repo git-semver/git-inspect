@@ -2,10 +2,9 @@ const { join } = require('path');
 const { mkdirSync, existsSync, readdirSync, lstatSync, unlinkSync, rmdirSync } = require('fs');
 const { promisify } = require('util');
 const { exec } = require('child_process');
-const driver = require('nodegit');
 const execAsync = promisify(exec);
-const Inspector = require('../lib/inspector');
-const Repository = require('../lib/adapters/nodegit/repository');
+const { Inspector, schema, Repository } = require('../index');
+const Ajv = require('ajv');
 
 const scriptsPath = join(__dirname, 'scripts');
 const garderPath = join(__dirname, 'garden');
@@ -44,8 +43,30 @@ function clearGarden(repoName)
 async function inspect(caseName)
 {
   const cwd = await createRepository(caseName);
-  const adapter = new Repository(cwd, driver);
+  const adapter = new Repository(cwd);
   return new Inspector(adapter);
 }
 
-module.exports = { createRepository, clearGarden, inspect };
+class SchemaValidator
+{
+  constructor()
+  {
+    this.ajv = new Ajv();
+  }
+
+  get errors(){
+    return this.ajv.errors;
+  }
+
+  validate(report)
+  {
+    return this.ajv.validate(schema, JSON.parse(JSON.stringify(report)));;
+  };
+}
+
+module.exports = {
+  createRepository,
+  clearGarden,
+  inspect,
+  SchemaValidator
+};

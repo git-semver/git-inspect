@@ -1,8 +1,6 @@
 # TODO
 
-* Return using History for commit reducers.
-This reducers need all commits (now use only master branch);
-Or use reverse Revwalk order.
+* Refactoring report
 
 * Add integration test for bare repository
 

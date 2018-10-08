@@ -1,12 +1,11 @@
 const { expect }  = require('chai');
 const sinon = require('sinon');
 const map = require('lodash/map');
-const keyBy = require('lodash/keyBy');
 const { inspect, clearGarden, SchemaValidator } = require('../helpers');
 
-describe('[Integration] Inspect branches is not obsolete', () =>
+describe('[Integration] Inspect total commits', () =>
 {
-  const caseName = 'not-obsolete-branch';
+  const caseName = 'unlinked-tracker';
   let inspector = null;
 
   beforeEach(async () => { inspector = await inspect(caseName); });
@@ -20,9 +19,9 @@ describe('[Integration] Inspect branches is not obsolete', () =>
     expect(valid).to.equal(true, JSON.stringify(validator.errors));
   });
 
-  it('Should be not exist obsolete branches', async () =>
+  it('Should be collect total commits count', async () =>
   {
-    const { branch: { obsolete }} = await inspector.report();
-    expect(Object.keys(keyBy(obsolete.branches, 'name')).length).to.equal(0);
+    const { commit: { total }} = await inspector.report();
+    expect(total).to.equal(7);
   });
 });
