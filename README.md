@@ -38,6 +38,7 @@ $ git-inspect
 ```
 {
   "commit": {
+    "total": <commits_total_count>,
     "duplicatedMessage": [
       [ "<commit_sha>" ]
     ],
