@@ -2,12 +2,9 @@ const { join } = require('path');
 const { mkdirSync, existsSync, readdirSync, lstatSync, unlinkSync, rmdirSync } = require('fs');
 const { promisify } = require('util');
 const { exec } = require('child_process');
-const driver = require('nodegit');
 const execAsync = promisify(exec);
-const Inspector = require('../lib/inspector');
-const Repository = require('../lib/adapters/nodegit/repository');
+const { Inspector, schema, Repository } = require('../index');
 const Ajv = require('ajv');
-const schema = require('../report-scheme.json');
 
 const scriptsPath = join(__dirname, 'scripts');
 const garderPath = join(__dirname, 'garden');
@@ -46,7 +43,7 @@ function clearGarden(repoName)
 async function inspect(caseName)
 {
   const cwd = await createRepository(caseName);
-  const adapter = new Repository(cwd, driver);
+  const adapter = new Repository(cwd);
   return new Inspector(adapter);
 }
 

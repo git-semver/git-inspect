@@ -1,6 +1,6 @@
 {
   "name": "git-inspect",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "GIT Inspector",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "git"
   ],
   "bin": {
-    "git-inspect": "./index.js"
+    "git-inspect": "./bin/index.js"
   },
   "author": {
     "name": "realb0t",

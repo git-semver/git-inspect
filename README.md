@@ -34,7 +34,23 @@ Now use only in bare repository directory
 ```
 $ git clone <repository> --bare
 $ cd ./<repository>
+```
+
+### Use as CLI
+
+```
 $ git-inspect
+```
+
+### Use as API
+
+```javascript
+const { Inspector, Repository, schema, version } = require('git-inspect');
+
+const cwd = process.cwd();
+const repository = new Repository(cwd);
+const inspector = new Inspector(repository);
+const report = async inspector.report();
 ```
 
 ## Output
