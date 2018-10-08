@@ -1,7 +1,7 @@
 const { expect }  = require('chai');
 const sinon = require('sinon');
 const map = require('lodash/map');
-const { inspect, clearGarden } = require('../helpers');
+const { inspect, clearGarden, SchemaValidator } = require('../helpers');
 
 describe('[Integration] Inspect history is linear', () =>
 {
@@ -11,10 +11,18 @@ describe('[Integration] Inspect history is linear', () =>
   beforeEach(async () => { inspector = await inspect(caseName); });
   afterEach(async () => await clearGarden(caseName));
 
+  it.skip('Should be supported by JSON Schema for this case', async () =>
+  {
+    const report = await inspector.report();
+    const validator = new SchemaValidator();
+    const valid = validator.validate(report);
+    expect(valid).to.equal(true, JSON.stringify(validator.errors));
+  });
+
   it('Should be history is linear', async () =>
   {
     const { branch: { linear }} = await inspector.report();
-    const { isLinearHistory, branches, linearFactor } = linear;
+    const { branches, linearFactor } = linear;
     const { master, topic1, topic2, topic3 } = branches;
     expect(linearFactor).to.equal(1);
     expect(master.cousins.length).to.equal(0);

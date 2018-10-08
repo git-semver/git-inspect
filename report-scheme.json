@@ -1,0 +1,145 @@
+{
+  "title": "Git Inspect report",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["commit", "branch"],
+  "properties": {
+    "commit": {
+      "type": "object",
+      "required": [
+        "total",
+        "duplicatedMessage",
+        "unlinkedTracker",
+        "shortMessage",
+        "longTitle"
+      ],
+      "properties": {
+        "total": {
+          "type": "number",
+          "title": "Commits total count"
+        },
+        "duplicatedMessage": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "title": "Commit hash",
+              "description": "Hash of commit with duplicated message"
+            }
+          }
+        },
+        "unlinkedTracker": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "title": "Commit hash",
+            "description": "Hash of commit without linked tracker message"
+          }
+        },
+        "shortMessage": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "title": "Commit hash",
+            "description": "Hash of commit with short message"
+          }
+        },
+        "longTitle": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "title": "Commit hash",
+            "description": "Hash of commit with long title message"
+          }
+        }
+      }
+    },
+    "branch": {
+      "type": "object",
+      "required": ["gitflow", "linear", "obsolete"],
+      "properties": {
+        "gitflow": {
+          "type": "object",
+          "required": ["branches", "scheme"],
+          "properties": {
+            "branches": {
+              "type": "object",
+              "required": [
+                "master",
+                "develop",
+                "features",
+                "hotfixes",
+                "releases",
+                "other"
+              ],
+              "properties": {
+                "master": { "type": "boolean" },
+                "develop": { "type": "boolean" },
+                "features": { "type": "boolean" },
+                "hotfixes": { "type": "boolean" },
+                "releases": { "type": "boolean" },
+                "other": { "type": "boolean" }
+              }
+            },
+            "scheme": { "type": "boolean" }
+          }
+        },
+        "linear": {
+          "type": "object",
+          "required": ["branches", "linearFactor"],
+          "properties": {
+            "branches": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "cousins", "linearFactor"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "title": "Name of branch"
+                  },
+                  "cousins": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "title": "Cousin commit hash"
+                    }
+                  },
+                  "linearFactor": {
+                    "type": "number",
+                    "title": "Branch linear factor",
+                    "description": "Cousin commits count / commits total"
+                  }
+                }
+              }
+            },
+            "linearFactor": {
+              "type": "number",
+              "title": "Average of branch linear factors"
+            }
+          }
+        },
+        "obsolete": {
+          "type": "object",
+          "required": ["branches"],
+          "properties": {
+            "branches": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "title": "Name of obsolete branch"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

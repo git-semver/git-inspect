@@ -32,6 +32,7 @@
     "ora": "^3.0.0"
   },
   "devDependencies": {
+    "ajv": "^6.5.4",
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "sinon": "^6.1.5"
