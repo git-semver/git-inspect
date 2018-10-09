@@ -57,7 +57,7 @@ const report = async inspector.report();
 
 Report output is available in two formats:
 
-- As JSON if use CLI (by report-scheme.json)
+- As JSON if use CLI (by [GitInspect report JSON Schema](report-schema.json))
 - As JS object if use Inspector API
 
 Example JSON output:
