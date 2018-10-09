@@ -8,9 +8,18 @@
     "test:integration": "mocha ./integration/ --recursive",
     "test": "mocha ./lib/ ./integration/ --recursive"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:git-semver/git-inspect.git"
+  },
+  "homepage": "https://github.com/git-semver/git-inspect",
   "keywords": [
-    "git"
+    "git", "inspector", "semver"
   ],
+  "bugs": {
+    "url": "https://github.com/git-semver/git-inspect/issues",
+    "email": "kazantsev.nickolay@gmail.com"
+  },
   "bin": {
     "git-inspect": "./bin/index.js"
   },
