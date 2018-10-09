@@ -1,6 +1,6 @@
 {
   "name": "git-inspect",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "GIT Inspector",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,9 @@
   },
   "homepage": "https://github.com/git-semver/git-inspect",
   "keywords": [
-    "git", "inspector", "semver"
+    "git",
+    "inspector",
+    "semver"
   ],
   "bugs": {
     "url": "https://github.com/git-semver/git-inspect/issues",
