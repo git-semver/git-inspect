@@ -2,6 +2,12 @@
 
 Git repository inspector.
 
+Used agreements from the following links to form inspection requirements:
+
+- [Git style guide](https://github.com/agis/git-style-guide)
+- [Distributed Git - Contributing to a Project](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project)
+- [Git Guidelines](https://github.com/monterail/guidelines/blob/master/git.md)
+
 The inspector collects information about:
 
 - Commits with duplicate message
