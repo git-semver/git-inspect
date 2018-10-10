@@ -35,7 +35,8 @@ $ npm install git-inspect -g
 
 ## Usage
 
-Now use only in bare repository directory
+In the working tree repository the inspector collects incomplete information
+Now use only in bare repository directory.
 
 ```
 $ git clone <repository> --bare
@@ -44,8 +45,14 @@ $ cd ./<repository>
 
 ### Use as CLI
 
+Run in repository directory:
 ```
 $ git-inspect
+```
+
+Run somewhere
+```
+$ git-inspect path-to-bare-repository
 ```
 
 ### Use as API
@@ -70,40 +77,53 @@ Example JSON output:
 
 ```json
 {
-	"commit": {
-		"total": 1,
-		"duplicatedMessage": [
-			["<commit_sha>"]
-		],
-		"unlinkedTracker": ["<commit_sha>"],
-		"shortMessage": ["<commit_sha>"],
-		"longTitle": ["<commit_sha>"]
-	},
-	"branch": {
-		"gitflow": {
-			"branches": {
-				"master": true,
-				"develop": true,
-				"features": true,
-				"hotfixes": true,
-				"releases": true,
-				"other": true
-			},
-			"scheme": true
-		},
-		"linear": {
-			"branches": [{
-				"name": "<branch_name>",
-				"cousins": [],
-				"linearFactor": 1
-			}],
-			"linearFactor": 1
-		},
-		"obsolete": {
-			"branches": [{
-				"name": "<branch_name>"
-			}]
-		}
-	}
+  "commit": {
+    "total": 1,
+    "duplicatedMessage": [
+      ["<commit_sha>"]
+    ],
+    "unlinkedTracker": ["<commit_sha>"],
+    "shortMessage": ["<commit_sha>"],
+    "longTitle": ["<commit_sha>"]
+  },
+  "branch": {
+    "gitflow": {
+    "branches": {
+      "master": true,
+      "develop": true,
+      "features": true,
+      "hotfixes": true,
+      "releases": true,
+      "other": true
+    },
+    "scheme": true
+  },
+  "linear": {
+    "branches": [{
+      "name": "<branch_name>",
+      "cousins": [],
+      "linearFactor": 1
+    }],
+    "linearFactor": 1
+  },
+  "obsolete": {
+    "branches": [{
+      "name": "<branch_name>"
+     }]
+    }
+  }
 }
 ```
+
+# Feedback
+
+- [Gitter](https://gitter.im/GitSemver/git-inspect)
+- [Issues](https://github.com/git-semver/git-inspect/issues)
+
+# Plan's
+
+See [TODO LIST](TODO.md)
+
+# License
+
+[GNU AGPLv3](LICENSE)
