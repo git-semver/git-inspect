@@ -10,13 +10,17 @@ Used agreements from the following links to form inspection requirements:
 
 The inspector collects information about:
 
-- Commits with duplicate message
+- Commits with duplicated message
 - Commits with long title message (more than 50 symbols in first commit message row)
 - Commits with short commit messages (without commit description rows)
 - Commits that are not linked to issues
 - Linearity of history
 - Obsolete branches
 - Supporting of GitFlow scheme
+
+Supported functionality
+
+- Inspection of local bare repository
 
 ## Install
 
@@ -28,14 +32,14 @@ $ npm link
 $ npm install -g
 ```
 
-From registry
+From NPM-registry
 ```
 $ npm install git-inspect -g
 ```
 
 ## Usage
 
-In the working tree repository the inspector collects incomplete information
+In the working tree repository the inspector collects incomplete information.
 Now use only in bare repository directory.
 
 ```
@@ -70,11 +74,10 @@ const report = async inspector.report();
 
 Report output is available in two formats:
 
-- As JSON if use CLI (by [GitInspect report JSON Schema](report-schema.json))
-- As JS object if use Inspector API
+- As JS object for use Inspector API
+- As JSON for use CLI (by [GitInspect report JSON Schema](report-schema.json))
 
 Example JSON output:
-
 ```json
 {
   "commit": {
@@ -115,15 +118,47 @@ Example JSON output:
 }
 ```
 
+# Tests
+
+Coverage includes integration tests and unit tests.
+
+For run all tests, execute:
+```
+$ npm test
+```
+
+To run only unit tests, execute:
+```
+$ npm run test:unit
+```
+
+Unit tests are located next to the code. And have file mask `*_test.js`.
+
+To run only integration tests, execute:
+```
+$ npm run test:integration
+```
+
+Integration tests are located in directory `./integration`. And have file mask `*_test.js`.
+
+
+# Build with
+
+- [NodeGit](https://www.nodegit.org/) - Use for work with git repository
+
 # Feedback
 
 - [Gitter](https://gitter.im/GitSemver/git-inspect)
 - [Issues](https://github.com/git-semver/git-inspect/issues)
 
-# Plan's
+# TODO
 
 See [TODO LIST](TODO.md)
 
+# Versioning
+
+We use [SemVer](https://semver.org/) for versioning. For the versions available, see [the tags](https://github.com/git-semver/git-inspect/tags) on this repository.
+
 # License
 
-[GNU AGPLv3](LICENSE)
+This project is licensed under the GNU AGPLv3 License - see the [LICENSE](LICENSE) file for details.
