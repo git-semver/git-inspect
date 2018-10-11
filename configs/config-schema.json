@@ -1,0 +1,39 @@
+{
+  "title": "Git Inspect config",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["repositoryType", "inspectors", "reducers"],
+  "properties": {
+    "repositoryType": {
+      "type": "string",
+      "title": "Type of repository",
+      "describe": "Type of repository in the working directory",
+      "enum": ["bare", "worktree"]
+    },
+    "inspectors": {
+      "title": "Array of inspectors for repository",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "props": { "type": "object" }
+        }
+      }
+    },
+    "reducers": {
+      "title": "Array of inspectors reducers",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "inspector"],
+        "properties": {
+          "inspector": { "type": "string" },
+          "name": { "type": "string" },
+          "props": { "type": "object" }
+        }
+      }
+    }
+  }
+}

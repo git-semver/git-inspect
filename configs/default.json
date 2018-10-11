@@ -1,0 +1,55 @@
+{
+  "repositoryType": "bare",
+  "inspectors": [
+    {
+      "name": "commit",
+      "props": {}
+    },
+    {
+      "name": "branch",
+      "props": {}
+    }
+  ],
+  "reducers": [
+    {
+      "inspector": "commit",
+      "name": "duplicated-message",
+      "props": {}
+    },
+    {
+      "inspector": "commit",
+      "name": "long-title",
+      "props": {}
+    },
+    {
+      "inspector": "commit",
+      "name": "short-message",
+      "props": {}
+    },
+    {
+      "inspector": "commit",
+      "name": "total",
+      "props": {}
+    },
+    {
+      "inspector": "commit",
+      "name": "unlinked-tracker",
+      "props": {}
+    },
+    {
+      "inspector": "branch",
+      "name": "gitflow",
+      "props": {}
+    },
+    {
+      "inspector": "branch",
+      "name": "linear",
+      "props": {}
+    },
+    {
+      "inspector": "branch",
+      "name": "obsolete",
+      "props": {}
+    }
+  ]
+}
