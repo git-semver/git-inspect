@@ -78,16 +78,19 @@ Report output is available in two formats:
 - As JSON for use CLI (by [GitInspect report JSON Schema](report-schema.json))
 
 Example JSON output:
-```json
+
+```
+$ git-inspect
+...
 {
   "commit": {
     "total": 1,
     "duplicatedMessage": [
-      ["<commit_sha>"]
+      ["4a41b496fe20a5fbea5e155999c79523536116ca"]
     ],
-    "unlinkedTracker": ["<commit_sha>"],
-    "shortMessage": ["<commit_sha>"],
-    "longTitle": ["<commit_sha>"]
+    "unlinkedTracker": ["4a41b496fe20a5fbea5e155999c79523536116ca"],
+    "shortMessage": ["4a41b496fe20a5fbea5e155999c79523536116ca"],
+    "longTitle": ["4a41b496fe20a5fbea5e155999c79523536116ca"]
   },
   "branch": {
     "gitflow": {
@@ -103,7 +106,7 @@ Example JSON output:
   },
   "linear": {
     "branches": [{
-      "name": "<branch_name>",
+      "name": "master",
       "cousins": [],
       "linearFactor": 1
     }],
@@ -111,7 +114,7 @@ Example JSON output:
   },
   "obsolete": {
     "branches": [{
-      "name": "<branch_name>"
+      "name": "feature/obsolete-feature-branch"
      }]
     }
   }
