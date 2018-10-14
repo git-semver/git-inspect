@@ -38,6 +38,7 @@
   "license": "GNU AGPLv3",
   "dependencies": {
     "commander": "^2.17.1",
+    "cosmiconfig": "^5.0.6",
     "lodash": "^4.17.10",
     "nodegit": "0.23.0-alpha.1",
     "ora": "^3.0.0"
