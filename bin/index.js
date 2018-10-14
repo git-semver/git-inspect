@@ -50,7 +50,7 @@ program
 
 
 
-  const adapter = new Repository(currentWorkDirectory);
+  const adapter = new Repository(currentWorkDirectory, config.repository);
   const inspector = new Inspector(adapter, config);
   const spinner = ora('Inspecting repository ...').start();
   const report = await new Promise((resolve, reject) => {
