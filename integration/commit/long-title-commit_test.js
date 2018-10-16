@@ -13,21 +13,24 @@ describe('[Integration] Inspect commits with long title', () =>
 
   it('Should be supported by JSON Schema for this case', async () =>
   {
-    const report = await inspector.report();
+    const report = await inspector.collect();
+    const result = report.getInstance();
     const validator = new SchemaValidator();
-    const valid = validator.validate(report);
+    const valid = validator.validate(result);
     expect(valid).to.equal(true, JSON.stringify(validator.errors));
   });
 
   it('Should be include in report commits with long title', async () =>
   {
-    const { commit: { longTitle }} = await inspector.report();
+    const report = await inspector.collect();
+    const { commit: { longTitle }} = report.getMappedResults();
     expect(longTitle.length).to.equal(1);
   });
 
   it('Should be include in report commits with long title and message', async () =>
   {
-    const { commit: { longTitle }} = await inspector.report();
+    const report = await inspector.collect();
+    const { commit: { longTitle }} = report.getMappedResults();
     expect(map(longTitle, 'message')).to.deep.equal([
       'This is not normal but is very long title. Bad commit'
     ]);
