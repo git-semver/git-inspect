@@ -81,43 +81,83 @@ Example JSON output:
 
 ```
 $ git-inspect
-...
+```
+
+Result:
+```
 {
-  "commit": {
-    "total": 1,
-    "duplicatedMessage": [
-      ["4a41b496fe20a5fbea5e155999c79523536116ca"]
+  "config": {},
+  "repository": {
+    "remote": [
+      {
+        "name": "origin",
+        "url": "git@github.com/user/example.git"
+      }
     ],
-    "unlinkedTracker": ["4a41b496fe20a5fbea5e155999c79523536116ca"],
-    "shortMessage": ["4a41b496fe20a5fbea5e155999c79523536116ca"],
-    "longTitle": ["4a41b496fe20a5fbea5e155999c79523536116ca"]
+    "directoryPath": "path/to/repository"
   },
-  "branch": {
-    "gitflow": {
-    "branches": {
-      "master": true,
-      "develop": true,
-      "features": true,
-      "hotfixes": true,
-      "releases": true,
-      "other": true
+  "results": [
+    {
+      "inspector": "commit",
+      "reducer": "duplicatedMessage",
+      "report": [
+        ["4a41b496fe20a5fbea5e155999c79523536116ca"]
+      ],
     },
-    "scheme": true
-  },
-  "linear": {
-    "branches": [{
-      "name": "master",
-      "cousins": [],
-      "linearFactor": 1
-    }],
-    "linearFactor": 1
-  },
-  "obsolete": {
-    "branches": [{
-      "name": "feature/obsolete-feature-branch"
-     }]
+    {
+      "inspector": "commit",
+      "reducer": "unlinkedTracker",
+      "report": ["4a41b496fe20a5fbea5e155999c79523536116ca"],
+    },
+    {
+      "inspector": "commit",
+      "reducer": "longTitle",
+      "report": ["4a41b496fe20a5fbea5e155999c79523536116ca"],
+    },
+    {
+      "inspector": "commit",
+      "reducer": "shortMessage",
+      "report": ["4a41b496fe20a5fbea5e155999c79523536116ca"],
+    },
+    {
+      "inspector": "branch",
+      "reducer": "gitflow",
+      "report": {
+          "master": true,
+          "develop": true,
+          "features": true,
+          "hotfixes": true,
+          "releases": true,
+          "other": true
+        },
+        "scheme": true
+      },
+    },
+    {
+      "inspector": "branch",
+      "reducer": "linear",
+      "report": {
+        "branches": [{
+          "name": "master",
+          "cousins": [],
+          "linearFactor": 1
+        }],
+        "linearFactor": 1  
+      },
+    },
+    {
+      "inspector": "branch",
+      "reducer": "obsolete",
+      "report": {
+        "branches": [{
+          "name": "feature/obsolete-feature-branch"
+         }]
+      },
     }
-  }
+  ],
+  "startTimestamp": '0000-00-00T00:00:00',
+  "endTimestamp": '0000-00-00T00:00:00',
+  "time": 0
 }
 ```
 
