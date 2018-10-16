@@ -14,14 +14,16 @@ describe('[Integration] Inspect total commits', () =>
   it('Should be supported by JSON Schema for this case', async () =>
   {
     const report = await inspector.collect();
+    const result = report.getInstance();
     const validator = new SchemaValidator();
-    const valid = validator.validate(report);
+    const valid = validator.validate(result);
     expect(valid).to.equal(true, JSON.stringify(validator.errors));
   });
 
   it('Should be collect total commits count', async () =>
   {
-    const { commit: { total }} = await inspector.collect();
+    const report = await inspector.collect();
+    const { commit: { total }} = report.getMappedResults();
     expect(total).to.equal(7);
   });
 });

@@ -15,14 +15,16 @@ describe('[Integration] Inspect branches is not obsolete', () =>
   it('Should be supported by JSON Schema for this case', async () =>
   {
     const report = await inspector.collect();
+    const result = report.getInstance();
     const validator = new SchemaValidator();
-    const valid = validator.validate(report);
+    const valid = validator.validate(result);
     expect(valid).to.equal(true, JSON.stringify(validator.errors));
   });
 
   it('Should be not exist obsolete branches', async () =>
   {
-    const { branch: { obsolete }} = await inspector.collect();
+    const report = await inspector.collect();
+    const { branch: { obsolete } } = report.getMappedResults();
     expect(Object.keys(keyBy(obsolete.branches, 'name')).length).to.equal(0);
   });
 });

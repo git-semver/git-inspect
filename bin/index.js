@@ -64,6 +64,6 @@ program
   spinner.clear(true);
   setTimeout(() =>
   {
-    console.log(JSON.stringify(report, 2, ' '));
+    console.log(JSON.stringify(report.getInstance(), 2, ' '));
   }, 1000);
 })();

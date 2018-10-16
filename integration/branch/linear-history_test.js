@@ -15,14 +15,16 @@ describe('[Integration] Inspect history is linear', () =>
   it('Should be supported by JSON Schema for this case', async () =>
   {
     const report = await inspector.collect();
+    const result = report.getInstance();
     const validator = new SchemaValidator();
-    const valid = validator.validate(report);
+    const valid = validator.validate(result);
     expect(valid).to.equal(true, JSON.stringify(validator.errors));
   });
 
   it('Should be history is linear', async () =>
   {
-    const { branch: { linear }} = await inspector.collect();
+    const report = await inspector.collect();
+    const { branch: { linear }} = report.getMappedResults();
     const { branches, linearFactor } = linear;
     const { master, topic1, topic2, topic3 } = keyBy(branches, 'name');
     expect(linearFactor).to.equal(1);
