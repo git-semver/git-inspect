@@ -67,7 +67,7 @@ const { Inspector, Repository, schema, version } = require('git-inspect');
 const cwd = process.cwd();
 const repository = new Repository(cwd);
 const inspector = new Inspector(repository);
-const report = async inspector.report();
+const report = async inspector.collect();
 ```
 
 ## Output

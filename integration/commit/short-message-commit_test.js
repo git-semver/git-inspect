@@ -13,7 +13,7 @@ describe('[Integration] Inspect commits with short message', () =>
 
   it('Should be supported by JSON Schema for this case', async () =>
   {
-    const report = await inspector.report();
+    const report = await inspector.collect();
     const validator = new SchemaValidator();
     const valid = validator.validate(report);
     expect(valid).to.equal(true, JSON.stringify(validator.errors));
@@ -21,13 +21,13 @@ describe('[Integration] Inspect commits with short message', () =>
 
   it('Should be include in report commits with short message', async () =>
   {
-    const { commit: { shortMessage }} = await inspector.report();
+    const { commit: { shortMessage }} = await inspector.collect();
     expect(shortMessage.length).to.equal(1)
   });
 
   it('Should be include in report commits with short message and with message', async () =>
   {
-    const { commit: { shortMessage }} = await inspector.report();
+    const { commit: { shortMessage }} = await inspector.collect();
     expect(map(shortMessage, 'message')).to.deep.equal([
       'Short message commit'
     ]);

@@ -54,7 +54,7 @@ program
   const inspector = new Inspector(adapter, config);
   const spinner = ora('Inspecting repository ...').start();
   const report = await new Promise((resolve, reject) => {
-    inspector.report().then(report =>
+    inspector.collect().then(report =>
       {
         spinner.succeed('Completed');
         resolve(report);

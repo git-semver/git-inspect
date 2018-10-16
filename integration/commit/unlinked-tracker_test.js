@@ -13,7 +13,7 @@ describe('[Integration] Inspect commits without issue tracker link', () =>
 
   it('Should be supported by JSON Schema for this case', async () =>
   {
-    const report = await inspector.report();
+    const report = await inspector.collect();
     const validator = new SchemaValidator();
     const valid = validator.validate(report);
     expect(valid).to.equal(true, JSON.stringify(validator.errors));
@@ -21,13 +21,13 @@ describe('[Integration] Inspect commits without issue tracker link', () =>
 
   it('Should be include in report commits without links', async () =>
   {
-    const { commit: { unlinkedTracker }} = await inspector.report();
+    const { commit: { unlinkedTracker }} = await inspector.collect();
     expect(unlinkedTracker.length).to.equal(3)
   });
 
   it('Should be include in report commits without links and with messages', async () =>
   {
-    const { commit: { unlinkedTracker }} = await inspector.report();
+    const { commit: { unlinkedTracker }} = await inspector.collect();
     expect(map(unlinkedTracker, 'message')).to.deep.equal([
       '3 unlinked',
       '4 unlinked',

@@ -13,7 +13,7 @@ describe('[Integration] Inspect commits without duplicated message', () =>
 
   it('Should be supported by JSON Schema for this case', async () =>
   {
-    const report = await inspector.report();
+    const report = await inspector.collect();
     const validator = new SchemaValidator();
     const valid = validator.validate(report);
     expect(valid).to.equal(true, JSON.stringify(validator.errors));
@@ -21,7 +21,7 @@ describe('[Integration] Inspect commits without duplicated message', () =>
 
   it('Should be not include in report commits with duplicated message ', async () =>
   {
-    const { commit: { duplicatedMessage }} = await inspector.report();
+    const { commit: { duplicatedMessage }} = await inspector.collect();
     expect(duplicatedMessage).to.deep.equal([])
   });
 });
