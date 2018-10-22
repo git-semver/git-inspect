@@ -26,13 +26,13 @@ Supported functionality
 
 From repository
 ```
-$ git clone git@bitbucket.org:realb0t/git-inspect.git
+$ git clone git@github.com:git-semver/git-inspect.git
 $ cd ./git-inspect
 $ npm link
 $ npm install -g
 ```
 
-From NPM-registry
+From [NPM registry](https://www.npmjs.com/package/git-inspect)
 ```
 $ npm install git-inspect -g
 ```
