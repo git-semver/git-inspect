@@ -1,6 +1,6 @@
 {
   "name": "git-inspect",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "GIT Inspector",
   "main": "index.js",
   "scripts": {
