@@ -1,5 +1,7 @@
 {
-  "repositoryType": "bare",
+  "repository": {
+    "repositoryType": "bare"
+  },
   "inspectors": [
     {
       "name": "commit",

@@ -3,7 +3,7 @@ const { mkdirSync, existsSync, readdirSync, lstatSync, unlinkSync, rmdirSync } =
 const { promisify } = require('util');
 const { exec } = require('child_process');
 const execAsync = promisify(exec);
-const { Inspector, schema, Repository } = require('../index');
+const { Inspector, reportSchema: schema, Repository } = require('../index');
 const Ajv = require('ajv');
 
 const scriptsPath = join(__dirname, 'scripts');

@@ -4,11 +4,17 @@
   "type": "object",
   "required": ["repositoryType", "inspectors", "reducers"],
   "properties": {
-    "repositoryType": {
-      "type": "string",
-      "title": "Type of repository",
-      "describe": "Type of repository in the working directory",
-      "enum": ["bare", "worktree"]
+    "repository": {
+      "type": "object",
+      "required": ["repositoryType"],
+      "properties": {
+        "repositoryType": {
+          "type": "string",
+          "title": "Type of repository",
+          "describe": "Type of repository in the working directory",
+          "enum": ["bare", "worktree"]
+        }
+      }
     },
     "inspectors": {
       "title": "Array of inspectors for repository",
